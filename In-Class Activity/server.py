@@ -20,3 +20,7 @@ while(True) :
     print(decoded)
     if decoded == 'exit':
         break
+
+    # Return a message to the client
+        # message and the clientAddr
+        # hint: use the sendto() method

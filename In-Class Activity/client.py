@@ -22,4 +22,5 @@ mySocket = socket(AF_INET, SOCK_DGRAM)
 
 mySocket.sendto(encoded, serverAddr)
 
-print(mySocket) 
+# receive a response from the server
+    # hint: recvfrom() method
