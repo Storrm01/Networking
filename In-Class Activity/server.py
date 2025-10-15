@@ -1,14 +1,19 @@
 from socket import *
 
-myIP = '127.0.0.1'
-myPort = 13000
-myAddr = (myIP, myPort)
+myIP = '10.111.121.31'
+myPort = 49100
+serverAddr = (myIP, myPort)
 
 # Create a socket to listen
 serverSocket = socket(AF_INET, SOCK_DGRAM)
 
 # Bind this socket to a port
-serverSocket.bind(myAddr)
+serverSocket.bind(serverAddr)
+#just for info
+# print(serverSocket)
+
+clientList = set() # empty to start
+
 
 # keep receiving
 while(True) :
@@ -18,9 +23,17 @@ while(True) :
     # Decode and Display the message received
     decoded = received.decode()
     print(decoded)
-    if decoded == 'exit':
-        break
+    clientList.add(clientAddr)
+    # if decoded == 'exit':
+    #     break
 
     # Return a message to the client
         # message and the clientAddr
         # hint: use the sendto() method
+    for client in clientList: # broadcasting to everyone
+        print(client)
+        # sendto(received, client)
+    msg = input("Please enter a message to send: ")
+    print()
+    encoded = msg.encode()
+    serverSocket.sendto(encoded, clientAddr)

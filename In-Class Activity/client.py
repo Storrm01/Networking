@@ -2,8 +2,8 @@ from socket import *
 
 # Pre-requisites
     # we need some info
-serverIP = '127.0.0.1'
-serverPort = 13000
+serverIP = '10.111.121.31'
+serverPort = 49100
 serverAddr = (serverIP, serverPort)
 
 # my own information (not required!)
@@ -24,3 +24,6 @@ mySocket.sendto(encoded, serverAddr)
 
 # receive a response from the server
     # hint: recvfrom() method
+received, serverAddr = mySocket.recvfrom(2048)
+decoded = received.decode()
+print(decoded)
